@@ -3,9 +3,16 @@ var name = getQueryVariable('name') || 'Unknown';
 var socket = io();
 console.log(name + ' wants to join' + room);
 
+jQuery('.room-title').text(room);
+
 socket.on('connect', function() {
 
 	console.log('user connete via socekt.io .. ');
+	socket.emit('joinRoom', {
+		name: name,
+		room: room
+	});
+
 });
 
 socket.on('message', function (message) {
