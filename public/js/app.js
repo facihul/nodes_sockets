@@ -19,10 +19,13 @@ socket.on('message', function (message) {
 	// moment timestamp
 	var momentTimestemp = moment.utc(message.timestamp);
 	var $message = jQuery('.message');
+	var $msg =jQuery('<li class="list-group-item"></li>')
 	console.log('new message ');
 	console.log(message.text);
-	$message.append('<p><strong>' + message.name + ' ' + momentTimestemp.local().format('HH:mm') + '</strong></p>');
-	$message.append('<p>' + message.text + '</p>');
+
+	$msg.append('<p><strong>' + message.name + ' ' + momentTimestemp.local().format('HH:mm') + '</strong></p>');
+	$msg.append('<p>' + message.text + '</p>');
+	$message.append($msg);
 	//jQuery('.message').append('<p><strong>'+ momentTimestemp.format('HH:mm') + ': </strong>' + message.text +  '<p/>');
 });
 
